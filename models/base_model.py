@@ -25,8 +25,8 @@ class BaseModel:
         """
         returns string representation of the object instance
         """
-        return "[<{}>] (<{}>) <{}>".format(type(self).__name__,
-                                           self.id, self.__dict__)
+        return "[{}] ({}) {}".format(type(self).__name__,
+                                     self.id, self.__dict__)
 
     def save(self):
         """update instance attribute"""
