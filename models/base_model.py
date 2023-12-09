@@ -2,7 +2,7 @@
 
 import uuid
 from datetime import datetime
-from models import storage
+from models
 """defines the BaseModel class and its attr and methods"""
 
 
@@ -30,7 +30,7 @@ class BaseModel:
                 else:
                     setattr(self, key, val)
         else:
-            storage.new(self)
+            models.storage.new(self)
 
     def __str__(self):
         """
@@ -42,7 +42,7 @@ class BaseModel:
     def save(self):
         """update instance attribute"""
         self.updated_at = datetime.today()
-        storage.save()
+        models.storage.save()
 
     def to_dict(self):
         """
