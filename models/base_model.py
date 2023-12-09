@@ -14,8 +14,8 @@ class BaseModel:
     def __init__(self, *args, **kwargs):
         """constructor method"""
         self.id = str(uuid.uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        self.created_at = datetime.today()
+        self.updated_at = datetime.today()
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
@@ -26,12 +26,12 @@ class BaseModel:
         """
         returns string representation of the object instance
         """
-        return "[{}] ({}) {}".format(type(self).__name__,
+        return "[{}] ({}) {}".format(self.__class__.__name__,
                                      self.id, self.__dict__)
 
-        def save(self):
-            """update instance attribute"""
-        self.updated_at = datetime.now()
+    def save(self):
+        """update instance attribute"""
+        self.updated_at = datetime.today()
 
     def to_dict(self):
         """
@@ -39,7 +39,7 @@ class BaseModel:
          keys/values of __dict__ of the instance
         """
         res_dict = self.__dict__.copy()
-        res_dict["__class__"] = type(self).__name__
+        res_dict["__class__"] = self.__class__.__name__
         res_dict["created_at"] = self.created_at.isoformat()
         res_dict["updated_at"] = self.updated_at.isoformat()
         return res_dict
