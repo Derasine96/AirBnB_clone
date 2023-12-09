@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """Dictionary to JSON String"""
 import json
+from models.base_model import BaseModel
 
 
 class FileStorage:
