@@ -6,20 +6,21 @@ from datetime import datetime
 
 
 class BaseModel:
-    """Base class for AirBnb"""
+    """Initialize a new BaseModel.
+    Args:
+    *args (any): Unused.
+    **kwargs (dict): Key/value pairs of attributes.
+    """
     def __init__(self, *args, **kwargs):
         """constructor method"""
+        self.id = str(uuid.uuid4())
+        self.created_at = datetime.now()
+        self.updated_at = datetime.now()
         if kwargs:
             for key, value in kwargs.items():
                 if key == "__class__":
                     continue
                 setattr(self, key, value)
-            self.created_at = datetime.fromisoformat(self.created_at)
-            self.updated_at = datetime.fromisoformat(self.updated_at)
-        else:
-            self.id = str(uuid.uuid4())
-            self.created_at = datetime.now()
-            self.updated_at = datetime.now()
 
     def __str__(self):
         """
@@ -28,8 +29,8 @@ class BaseModel:
         return "[{}] ({}) {}".format(type(self).__name__,
                                      self.id, self.__dict__)
 
-    def save(self):
-        """update instance attribute"""
+        def save(self):
+            """update instance attribute"""
         self.updated_at = datetime.now()
 
     def to_dict(self):
