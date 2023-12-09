@@ -6,21 +6,28 @@ from datetime import datetime
 
 
 class BaseModel:
-    """Initialize a new BaseModel.
-    Args:
-    *args (any): Unused.
-    **kwargs (dict): Key/value pairs of attributes.
-    """
+    """Represents the BaseModel of the HBnB project."""
+
     def __init__(self, *args, **kwargs):
-        """constructor method"""
+        """Initialize a new BaseModel
+
+        Args:
+            *args (any): Unused.
+            **kwargs (dict): Key/value pairs of attributes.
+        """
         self.id = str(uuid.uuid4())
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
+
         if kwargs:
-            for key, value in kwargs.items():
+            for key, val in kwargs.items():
                 if key == "__class__":
                     continue
-                setattr(self, key, value)
+                elif key in ["created_at", "updated_at"]:
+                    setattr(self, key,
+                            datetime.strptime(val, "%Y-%m-%dT%H:%M:%S.%f"))
+                else:
+                    setattr(self, key, val)
 
     def __str__(self):
         """
