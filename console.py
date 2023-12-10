@@ -179,8 +179,8 @@ class HBNBCommand(cmd.Cmd):
             print([str(v) for k, v in models.storage.all().items()
                   if k.split('.')[0] == args[0]])
 
-            def do_update(self, arg):
-                """Updates an instance based on the class name and id
+    def do_update(self, arg):
+        """Updates an instance based on the class name and id
         by adding or updating attribute (save the change into
         the JSON file).
 
@@ -236,5 +236,5 @@ class HBNBCommand(cmd.Cmd):
             print(len([v for k, v in models.storage.all().items()
                       if k.split('.')[0] == args[0]]))
 
-            if _name_ == '_main_':
-                HBNBCommand().cmdloop()
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()
