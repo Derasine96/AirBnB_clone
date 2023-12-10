@@ -82,6 +82,21 @@ class TestBaseModelInstantiation(unittest.TestCase):
 class TestBaseModelSave(unittest.TestCase):
     """Test for the save method of BaseModel class"""
 
+    @classmethod
+    def setUp(self):
+        try:
+            os.rename("file.json", "tmp")
+        except IOError:
+            pass
+
+    @classmethod
+    def tearDown(self):
+        try:
+            os.remove("file.json")
+            os.rename("tmp", "file.json")
+        except IOError:
+            pass
+
     def test_save(self):
         """Test save method"""
         bm = BaseModel()
@@ -103,6 +118,13 @@ class TestBaseModelSave(unittest.TestCase):
         """Test save method with arg"""
         with self.assertRaises(TypeError):
             BaseModel().save(None)
+
+    def test_save_updates_file(self):
+        bm = BaseModel()
+        bm.save()
+        bm_id = f"BaseModel.{bm.id}"
+        with open("file.json", "r") as f:
+            self.assertIn(bm_id, f.read())
 
 class TestBaseModelTo_dict(unittest.TestCase):
     """Test for the to_dict method of BaseModel Class"""
