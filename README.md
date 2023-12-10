@@ -227,10 +227,9 @@ show <class> <id>
 
 ```bash
 (hbnb) create BaseModel
-e45ddda9-eb80-4858-99a9-226d4f08a629
+ff74d560-42e1-453e-ad11-a4aec10da1cc
 (hbnb) all BaseModel
-["[BaseModel] (4c8f7ebc-257f-4ed1-b26b-e7aace459897) [BaseModel] (4c8f7ebc-257f-4ed1-b26b-e7aace459897) {'id': '4c8f7ebc-257f-4ed1-b26b-e7aace459897', 'created_at': datetime.datetime(2021, 11, 13, 22, 19, 19, 447155), 'updated_at': datetime.datetime(2021, 11, 13, 22, 19, 19, 447257), 'name': 'My First Model', 'my_number': 89}"]
-["[BaseMode
+["[BaseModel] (ff74d560-42e1-453e-ad11-a4aec10da1cc) {'id': 'ff74d560-42e1-453e-ad11-a4aec10da1cc', 'created_at': datetime.datetime(2023, 12, 10, 20, 34, 40, 821428), 'updated_at': datetime.datetime(2023, 12, 10, 20, 34, 40, 821605)}"]
 ```
 
 * count
@@ -239,9 +238,9 @@ e45ddda9-eb80-4858-99a9-226d4f08a629
 
 ```bash
 (hbnb) create City
-4e01c33e-2564-42c2-b61c-17e512898bad
+ff74d560-42e1-453e-ad11-a4aec10da1cc
 (hbnb) create City
-e952b772-80a5-41e9-b728-6bc4dc5c21b4
+ff74d560-42e1-453e-ad11-a4aec10da1cc
 (hbnb) count City
 2
 (hbnb)
