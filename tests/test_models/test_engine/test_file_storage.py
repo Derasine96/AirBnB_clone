@@ -90,7 +90,7 @@ class TestFileStorageMethods(unittest.TestCase):
         bm = BaseModel()
         user = User()
         models.storage.new(bm)
-        models.stroage.new(user)
+        models.storage.new(user)
         models.storage.save()
         with open("file.json", "r") as f:
             text = f.read()
