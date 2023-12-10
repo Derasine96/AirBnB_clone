@@ -29,6 +29,9 @@ class TestFileStorageInstantiation(unittest.TestCase):
         with self.assertRaises(TypeError):
             FileStorage(None)
 
+    def test_storage_initializes(self):
+        self.assertEqual(type(models.storage), FileStorage)
+
 
 class TestFileStorageMethods(unittest.TestCase):
     """Unittests for testing methods of the FileStorage class"""
@@ -53,6 +56,9 @@ class TestFileStorageMethods(unittest.TestCase):
 
     def test_all_returns_dict(self):
         self.assertEqual(dict, type(FileStorage().all()))
+
+    def test_all(self):
+        self.assertEqual(dict, type(models.storage.all()))
 
     def test_all_returns_objects(self):
         self.assertIs(FileStorage().all(), FileStorage._FileStorage__objects)
@@ -80,7 +86,9 @@ class TestFileStorageMethods(unittest.TestCase):
         models.storage.new(bm)
         models.storage.save()
         with open("file.json", "r") as f:
-            self.assertIn(bm.id, f.read())
+            text = f.read()
+            self.assertIn(bm.id, text)
+            self.assertIn(f"BaseModel.{bm.id}", text)
 
     def test_save_with_arg(self):
         with self.assertRaises(TypeError):
@@ -92,6 +100,8 @@ class TestFileStorageMethods(unittest.TestCase):
         models.storage.save()
         models.storage.reload()
         self.assertIn(f"BaseModel.{bm.id}", models.storage.all().keys())
+        self.assertIn(f"BaseModel.{bm.id}",
+                      FileStorage._FileStorage__objects.keys())
 
     def test_reload_with_arg(self):
         with self.assertRaises(TypeError):
