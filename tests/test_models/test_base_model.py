@@ -126,6 +126,7 @@ class TestBaseModelSave(unittest.TestCase):
         with open("file.json", "r") as f:
             self.assertIn(bm_id, f.read())
 
+
 class TestBaseModelTo_dict(unittest.TestCase):
     """Test for the to_dict method of BaseModel Class"""
 
