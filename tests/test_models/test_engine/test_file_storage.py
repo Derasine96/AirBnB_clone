@@ -6,6 +6,11 @@ Unittest cases:
     TestFileStorageInstantiation
     TestFileStorageMethods
 """
+import unittest
+import os
+import models
+from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 
 
 class TestFileStorageInstantiation(unittest.TestCase):
