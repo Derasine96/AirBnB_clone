@@ -20,7 +20,7 @@ class BaseModel:
         self.created_at = datetime.today()
         self.updated_at = datetime.today()
 
-        if kwargs:
+        if len(kwargs) != 0:
             for key, val in kwargs.items():
                 if key == "__class__":
                     continue
