@@ -30,16 +30,10 @@ All the classes are handled by the `Storage` engine in the `FileStorage` Class.
 
  <!-- Style guidelines -->
 * Style guidelines:
-  * [pycodestyle (version 2.7.*)](https://pypi.org/project/pycodestyle/)
-  * [PEP8](https://pep8.org/)
-
-All the development and testing was runned over an operating system Ubuntu 20.04 LTS using programming language Python 3.8.3. The editors used were VIM 8.1.2269, VSCode 1.6.1 and Atom 1.58.0 . Control version using Git 2.25.1.
+* [pycodestyle (version 2.7.*)](https://pypi.org/project/pycodestyle/)
+* [PEP8](https://pep8.org/)
 
 ## 0x03 Installation
-
-```bash
-git clone https://github.com/aysuarex/AirBnB_clone.git
-```
 
 change to the `AirBnb` directory and run the command:
 
@@ -141,7 +135,6 @@ To run the tests in non-interactive mode, and discover all the test, you can use
 ```bash
 python3 -m unittest discover tests
 ```
-
 
 ## 0x05 Usage
 
@@ -258,16 +251,17 @@ ff74d560-42e1-453e-ad11-a4aec10da1cc
 ```
 ## Authors
 <details>
-    <summary>Ayomide Suara</summary>
+    <summary>Gbenga Etomu</summary>
     <ul>
-    <li><a href="https://www.github.com/aysuarex">Github</a></li>
-    <li><a href="https://www.twitter.com/Aysuarex">Twitter</a></li>
+    <li><a href="https://github.com/CyberGA">Github</a></li>
+    <li><a href="https://www.twitter.CyberGA">Twitter</a></li>
     <li><a href="mailto:aysuarex@gmail.com">e-mail</a></li>
     </ul>
 </details>
 <details>
     <summary>Bamidele Adefolaju</summary>
     <ul>
+
     <li><a href="https://www.github.com/lexxyla">Github</a></li>
     <li><a href="https://www.twitter.com/lexxyla">Twitter</a></li>
     <li><a href="mailto:bamideleadefolaju@gmail.com">e-mail</a></li>
