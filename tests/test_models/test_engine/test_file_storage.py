@@ -11,6 +11,7 @@ import os
 import models
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
+from models.user import User
 
 
 class TestFileStorageInstantiation(unittest.TestCase):
@@ -69,9 +70,13 @@ class TestFileStorageMethods(unittest.TestCase):
 
     def test_new(self):
         bm = BaseModel()
+        user = User()
         models.storage.new(bm)
+        models.storage.new(user)
         self.assertIn(bm, models.storage.all().values())
         self.assertIn(f"BaseModel.{bm.id}", models.storage.all().keys())
+        self.assertIn(user, models.storage.all().values())
+        self.assertIn(f"User.{user.id}", models.storage.all().keys())
 
     def test_new_with_args(self):
         with self.assertRaises(AttributeError):
@@ -83,12 +88,16 @@ class TestFileStorageMethods(unittest.TestCase):
 
     def test_save(self):
         bm = BaseModel()
+        user = User()
         models.storage.new(bm)
+        models.stroage.new(user)
         models.storage.save()
         with open("file.json", "r") as f:
             text = f.read()
             self.assertIn(bm.id, text)
             self.assertIn(f"BaseModel.{bm.id}", text)
+            self.assertIn(user.id, text)
+            self.assertIn(f"User.{user.id}", text)
 
     def test_save_with_arg(self):
         with self.assertRaises(TypeError):
@@ -96,11 +105,16 @@ class TestFileStorageMethods(unittest.TestCase):
 
     def test_reload(self):
         bm = BaseModel()
+        user = User()
         models.storage.new(bm)
+        models.storage.new(user)
         models.storage.save()
         models.storage.reload()
         self.assertIn(f"BaseModel.{bm.id}", models.storage.all().keys())
         self.assertIn(f"BaseModel.{bm.id}",
+                      FileStorage._FileStorage__objects.keys())
+        self.assertIn(f"User.{user.id}", models.storage.all().keys())
+        self.assertIn(f"User.{user.id}",
                       FileStorage._FileStorage__objects.keys())
 
     def test_reload_with_arg(self):
