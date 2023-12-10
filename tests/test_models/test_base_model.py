@@ -79,5 +79,92 @@ class TestBaseModelInstantiation(unittest.TestCase):
         self.assertEqual(bm.updated_at, dt)
 
 
+class TestBaseModelSave(unittest.TestCase):
+    """Test for the save method of BaseModel class"""
+
+    def test_save(self):
+        """Test save method"""
+        bm = BaseModel()
+        bm.save()
+        self.assertNotEqual(bm.created_at, bm.updated_at)
+
+    def test_more_saves(self):
+        bm = BaseModel()
+        sleep(0.1)
+        first_updated_at = bm.updated_at
+        bm.save()
+        second_updated_at = bm.updated_at
+        self.assertLess(first_updated_at, second_updated_at)
+        sleep(0.1)
+        bm.save()
+        self.assertLess(second_updated_at, bm.updated_at)
+
+    def test_save_with_arg(self):
+        """Test save method with arg"""
+        with self.assertRaises(TypeError):
+            BaseModel().save(None)
+
+class TestBaseModelTo_dict(unittest.TestCase):
+    """Test for the to_dict method of BaseModel Class"""
+
+    def test_to_dict(self):
+        """Test to_dict method"""
+        bm = BaseModel()
+        bm.name = "Gbenga"
+        bm.my_number = 24
+        bm_dict = bm.to_dict()
+        self.assertEqual(bm_dict["__class__"], "BaseModel")
+        self.assertEqual(type(bm_dict["created_at"]), str)
+        self.assertEqual(type(bm_dict["updated_at"]), str)
+        self.assertEqual(bm_dict["name"], "Gbenga")
+        self.assertEqual(bm_dict["my_number"], 24)
+        self.assertEqual(type(bm_dict["id"]), str)
+
+    def test_to_dict_one_arg(self):
+        """Test to_dict method with no args"""
+        with self.assertRaises(TypeError):
+            BaseModel().to_dict(None)
+
+    def test_to_dict_type(self):
+        bm = BaseModel()
+        self.assertTrue(dict, type(bm.to_dict()))
+
+    def test_to_dict_contains_correct_keys(self):
+        bm = BaseModel()
+        self.assertIn("id", bm.to_dict())
+        self.assertIn("created_at", bm.to_dict())
+        self.assertIn("updated_at", bm.to_dict())
+        self.assertIn("__class__", bm.to_dict())
+
+    def test_to_dict_two_arg(self):
+        """Test to_dict method with one more arg"""
+        with self.assertRaises(TypeError):
+            BaseModel().to_dict(None, None)
+
+    def test_to_dict_contains_added_attributes(self):
+        bm = BaseModel()
+        bm.name = "Gbenga"
+        bm.my_number = 24
+        self.assertIn("name", bm.to_dict())
+        self.assertIn("my_number", bm.to_dict())
+
+    def test_to_dict_output(self):
+        dt = datetime.today()
+        bm = BaseModel()
+        bm.id = "123456"
+        bm.created_at = bm.updated_at = dt
+        bm_dict = {
+            'id': '123456',
+            '__class__': 'BaseModel',
+            'created_at': dt.isoformat(),
+            'updated_at': dt.isoformat()
+        }
+        self.assertDictEqual(bm.to_dict(), bm_dict)
+
+    def test_contrast_to_dict_dunder_dict(self):
+        bm = BaseModel()
+        self.assertNotEqual(bm.to_dict(), bm.__dict__)
+
+
 if __name__ == "__main__":
     unittest.main()
