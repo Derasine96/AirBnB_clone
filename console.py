@@ -10,6 +10,7 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
     __classes = {
         "BaseModel",
+        "User",
     }
 
     def do_EOF(self, line):
