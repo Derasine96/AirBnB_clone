@@ -38,7 +38,7 @@ class HBNBCommand(cmd.Cmd):
                 self.do_all(args[0])
             elif args[1] == "count()":
                 print(len([v for k, v in models.storage.all().items()
-                    if k.split('.')[0] == args[0]]))
+                          if k.split('.')[0] == args[0]]))
             elif args[1][:5] == "show(" and args[1][-1] == ')':
                 self.do_show(f"{args[0]} {args[1][6:-2]}")
             elif args[1][:8] == "destroy(" and args[1][-1] == ')':
@@ -52,7 +52,6 @@ class HBNBCommand(cmd.Cmd):
                 #     new_args[1] = new_args[1].replace('}', '')
                 # new_args[1] = new_args[1].replace('{', '')
                 # new_args[1] = new_args[1].replace('}', '')
-
 
                 print("New args: ", new_args)
                 args = [args[0]] + new_args
@@ -174,7 +173,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             print([str(v) for k, v in models.storage.all().items()
-                if k.split('.')[0] == args[0]])
+                  if k.split('.')[0] == args[0]])
 
             def do_update(self, arg):
                 """Updates an instance based on the class name and id
@@ -227,7 +226,7 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             print(len([v for k, v in models.storage.all().items()
-                if k.split('.')[0] == args[0]]))
+                      if k.split('.')[0] == args[0]]))
 
             if _name_ == '_main_':
                 HBNBCommand().cmdloop()
