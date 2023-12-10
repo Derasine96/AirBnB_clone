@@ -44,14 +44,18 @@ class HBNBCommand(cmd.Cmd):
             elif args[1][:8] == "destroy(" and args[1][-1] == ')':
                 self.do_destroy(f"{args[0]} {args[1][9:-2]}")
             elif args[1][:7] == "update(" and args[1][-1] == ')':
+                if "{" in args[1] or "}" in args[1]:
+                    args[1] = args[1].replace('{', '').replace('}', '')
+                print("Args: ", args)
                 new_args = args[1][8:-1].split(', ')
                 print("New args: ", new_args)
 
-                # if "{" or "}" in new_args[1]:
-                #     new_args[1] = new_args[1].replace('{', '')
-                #     new_args[1] = new_args[1].replace('}', '')
-                # new_args[1] = new_args[1].replace('{', '')
-                # new_args[1] = new_args[1].replace('}', '')
+                temp_arg = []
+                for arg in new_args[1:]:
+                    print("Arg: ", arg)
+                    if ":" in arg:
+                        temp_arg.append(arg.replace(':', ','))
+                print("Temp arg: ", temp_arg)
 
                 print("New args: ", new_args)
                 args = [args[0]] + new_args
