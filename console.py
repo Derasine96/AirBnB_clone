@@ -15,14 +15,62 @@ class HBNBCommand(cmd.Cmd):
     """Defines the HBnB command interpreter"""
     prompt = "(hbnb) "
     __classes = {
-        "BaseModel",
-        "User",
-        "Place",
-        "State",
-        "City",
-        "Amenity",
-        "Review",
-    }
+            "BaseModel",
+            "User",
+            "Place",
+            "State",
+            "City",
+            "Amenity",
+            "Review",
+            }
+
+    def default(self, arg):
+        """Called on an input line when the command prefix is not recognized.
+        If this method is not overridden, it prints an error message and
+        returns.
+
+        Args:
+            arg (str): command line arguments
+        """
+        args = arg.split('.')
+        if len(args) > 1 and args[0] in HBNBCommand.__classes:
+            if args[1] == "all()":
+                self.do_all(args[0])
+            elif args[1] == "count()":
+                print(len([v for k, v in models.storage.all().items()
+                    if k.split('.')[0] == args[0]]))
+            elif args[1][:5] == "show(" and args[1][-1] == ')':
+                self.do_show(f"{args[0]} {args[1][6:-2]}")
+            elif args[1][:8] == "destroy(" and args[1][-1] == ')':
+                self.do_destroy(f"{args[0]} {args[1][9:-2]}")
+            elif args[1][:7] == "update(" and args[1][-1] == ')':
+                new_args = args[1][8:-1].split(', ')
+                print("New args: ", new_args)
+
+                # if "{" or "}" in new_args[1]:
+                #     new_args[1] = new_args[1].replace('{', '')
+                #     new_args[1] = new_args[1].replace('}', '')
+                # new_args[1] = new_args[1].replace('{', '')
+                # new_args[1] = new_args[1].replace('}', '')
+
+
+                print("New args: ", new_args)
+                args = [args[0]] + new_args
+                args = [arg.replace('"', '') for arg in args]
+                print("Args: ", args)
+                if len(args) < 1:
+                    print("** instance id missing **")
+                elif len(args) < 2:
+                    print("** attribute name missing **")
+                elif len(args) < 3:
+                    print("** value missing **")
+                else:
+                    key = f"{args[0]}.{args[1]}"
+                    if key in models.storage.all():
+                        obj = models.storage.all()[key]
+                        self.do_update(f"{args[0]} {args[1]} {args[2]} '{args[3]}'")
+                    else:
+                        print("** no instance found **")
 
     def do_EOF(self, line):
         """Exit command"""
@@ -41,7 +89,7 @@ class HBNBCommand(cmd.Cmd):
         if arg:
             if hasattr(self, 'do_' + arg):
                 func = getattr(self, 'do_' + arg)
-                print(f"{func.__doc__}\n")
+                print(f"{func._doc_}\n")
         else:
             super().do_help(arg)
 
@@ -126,10 +174,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
         else:
             print([str(v) for k, v in models.storage.all().items()
-                   if k.split('.')[0] == args[0]])
+                if k.split('.')[0] == args[0]])
 
-    def do_update(self, arg):
-        """Updates an instance based on the class name and id
+            def do_update(self, arg):
+                """Updates an instance based on the class name and id
         by adding or updating attribute (save the change into
         the JSON file).
 
@@ -164,6 +212,22 @@ class HBNBCommand(cmd.Cmd):
             else:
                 print("** no instance found **")
 
+    def do_count(self, arg):
+        """Retrieve the number of instances of a class.
 
-if __name__ == '__main__':
-    HBNBCommand().cmdloop()
+        Usage: count <class>
+
+        Args:
+            arg (str): command line arguments
+        """
+        args = arg.split()
+        if not arg:
+            print("** class name missing **")
+        elif args[0] not in HBNBCommand.__classes:
+            print("** class doesn't exist **")
+        else:
+            print(len([v for k, v in models.storage.all().items()
+                if k.split('.')[0] == args[0]]))
+
+            if _name_ == '_main_':
+                HBNBCommand().cmdloop()
