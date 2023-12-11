@@ -51,11 +51,11 @@
 	(hbnb) help
 
 	Documented commands (type help <topic>):
-		========================================
-			EOF  help  quit
+	========================================
+	EOF  help  quit
 
 	(hbnb)
-(hbnb)
+	(hbnb)
 	(hbnb) quit
 	$
 	```
@@ -64,10 +64,10 @@
 
 	```bash
 	$ echo "help" | ./console.py
-(hbnb)
+	(hbnb)
 
 	Documented commands (type help <topic>):
-		========================================
+	========================================
 	EOF  help  quit
 	(hbnb)
 	$
