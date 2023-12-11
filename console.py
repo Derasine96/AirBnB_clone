@@ -92,7 +92,7 @@ class HBNBCommand(cmd.Cmd):
         if arg:
             if hasattr(self, 'do_' + arg):
                 func = getattr(self, 'do_' + arg)
-                print(f"{func._doc_}\n")
+                print(f"{func.__doc__}\n")
         else:
             super().do_help(arg)
 
