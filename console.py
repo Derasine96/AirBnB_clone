@@ -52,7 +52,7 @@ class HBNBCommand(cmd.Cmd):
                 for arg in new_args[1:]:
                     if ":" in arg:
                         temp_arg.append(arg.replace(':', ','))
-                if len(temp_arg) == 0:
+                if len(temp_arg) == 0 and len(new_args) > 3:
                     temp_arg.append(f"{new_args[1]}, {new_args[2]}")
 
                 for arg in temp_arg:
