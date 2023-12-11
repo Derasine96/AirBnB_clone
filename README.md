@@ -152,10 +152,10 @@
 	(hbnb) help
 
 	Documented commands (type help <topic>):
-		========================================
-			EOF  all  count  create  destroy  help  quit  show  update
+	========================================
+	EOF  all  count  create  destroy  help  quit  show  update
 
-			(hbnb)
+	(hbnb)
 	```
 
 	* Quit the console:
@@ -181,7 +181,7 @@
 	```bash
 	(hbnb) create BaseModel
 	6cfb47c4-a434-4da7-ac03-2122624c3762
-(hbnb)
+	(hbnb)
 	```
 
 	* Show
@@ -207,7 +207,7 @@
 	(hbnb) destroy User 0c98d2b8-7ffa-42b7-8009-d9d54b69a472
 	(hbnb) show User 0c98d2b8-7ffa-42b7-8009-d9d54b69a472
 	** no instance found **
-(hbnb)
+	(hbnb)
 	```
 
 	* all
@@ -233,7 +233,7 @@
 	ff74d560-42e1-453e-ad11-a4aec10da1cc
 	(hbnb) count City
 	2
-(hbnb)
+	(hbnb)
 	```
 
 	* update
