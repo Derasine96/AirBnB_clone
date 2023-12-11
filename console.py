@@ -236,5 +236,6 @@ class HBNBCommand(cmd.Cmd):
             print(len([v for k, v in models.storage.all().items()
                       if k.split('.')[0] == args[0]]))
 
+
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
