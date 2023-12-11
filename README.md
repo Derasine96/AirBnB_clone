@@ -78,7 +78,7 @@
 	(hbnb)
 
 	Documented commands (type help <topic>):
-		========================================
+	========================================
 	EOF  help  quit
 	(hbnb)
 	$
@@ -104,15 +104,15 @@
 
 	* Functions (inside and outside a class):
 
-		```python
-		python3 -c 'print(__import__("my_module").my_function.__doc__)'
-		```
+	```python
+	python3 -c 'print(__import__("my_module").my_function.__doc__)'
+	```
 
-		and
+	and
 
-		```python
-		python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
-		```
+	```python
+	python3 -c 'print(__import__("my_module").MyClass.my_function.__doc__)'
+	```
 
 ### Python Unit Tests
 
