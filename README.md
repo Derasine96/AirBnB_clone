@@ -116,34 +116,34 @@
 
 ### Python Unit Tests
 
-		* unittest module
-		* File extension ``` .py ```
-		* Files and folders star with ```test_```
-		* Organization:for ```models/base.py```, unit tests in: ```tests/test_models/test_base.py```
-		* Execution command: ```python3 -m unittest discover tests```
-		* or: ```python3 -m unittest tests/test_models/test_base.py```
+	* unittest module
+	* File extension ``` .py ```
+	* Files and folders star with ```test_```
+	* Organization:for ```models/base.py```, unit tests in: ```tests/test_models/test_base.py```
+	* Execution command: ```python3 -m unittest discover tests```
+	* or: ```python3 -m unittest tests/test_models/test_base.py```
 
 ### run test in interactive mode
 
-		```bash
-		echo "python3 -m unittest discover tests" | bash
-		```
+	```bash
+	echo "python3 -m unittest discover tests" | bash
+	```
 
 ### run test in non-interactive mode
 
-		To run the tests in non-interactive mode, and discover all the test, you can use the command:
+	To run the tests in non-interactive mode, and discover all the test, you can use the command:
 
-		```bash
-		python3 -m unittest discover tests
-		```
+	```bash
+	python3 -m unittest discover tests
+	```
 
 ## 0x05 Usage
 
-		* Start the console in interactive mode:
+	* Start the console in interactive mode:
 
-		```bash
+	```bash
 	$ ./console.py
-(hbnb)
+	(hbnb)
 	```
 
 	* Use help to see the available commands:
