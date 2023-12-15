@@ -5,7 +5,7 @@ header {
 	border-bottom: 1px #CCCCCC solid;
 }
 
-div {
+.logo {
 	display: flex;
 	background-image: url(../images/logo.png);
 	background-repeat: no-repeat;
