@@ -1,17 +1,17 @@
 header {
-	color: white;
-	height: 70px;
-	width: 100%;
-	border-bottom: 1px #CCCCCC solid;
+    color: white;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px #CCCCCC solid;
 }
 
 .logo {
-	display: flex;
-	background-image: url(../images/logo.png);
-	background-repeat: no-repeat;
-	justify-content: space-around;
-	padding: 25px;
-	padding-bottom: 30px;
-	margin-left: 20px;
-
+    display: flex;
+    background-image: url(../images/logo.png);
+    background-repeat: no-repeat;
+    justify-content: space-around;
+    padding: 25px;
+    padding-bottom: 30px;
+    margin-left: 20px;
+    border: 2px;
 }
