@@ -7,7 +7,7 @@ header {
 
 .logo {
     display: flex;
-    background-image: url(../images/logo.png);
+    background-image: url(images/logo.png);
     background-repeat: no-repeat;
     justify-content: space-around;
     padding: 25px;

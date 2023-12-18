@@ -8,4 +8,5 @@ footer {
 	text-align: center;
 	line-height: 60px;
 	background-color: white;
+	position: fixed;
 }
