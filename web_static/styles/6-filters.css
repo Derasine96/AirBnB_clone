@@ -56,3 +56,58 @@ button:hover {
     margin-top: 0;
     padding-left: 30px;
 }
+
+
+/* DROPDOWN STYLES */
+.popover ul,
+.popover li {
+    list-style: none;
+}
+
+.popover {
+    visibility: hidden;
+    position: relative;
+    background-color: #FAFAFA;
+    border: 1px #DDDDDD solid;
+    z-index: 1;
+    border-radius: 4px;
+    margin-top: 0;
+    margin-left: 0;
+    padding-top: 0;
+}
+
+.locations:hover .popover {
+    visibility: visible;
+    display: block;
+}
+
+.amenities:hover .popover {
+    visibility: visible;
+    display: block;
+}
+
+.popover-menu {
+    padding: 0;
+    margin-top: 0;
+}
+
+li {
+    list-style-type: none;
+    padding-bottom: 5px;
+    padding-left: 10px;
+}
+
+ul {
+    padding-top: 30px;
+    list-style: none;
+}
+
+.filters h2 {
+    margin-bottom: 0;
+    padding-left: 0px;
+    margin-left: 0;
+}
+
+.popover.lists {
+    padding: 25px;
+}
